@@ -27,7 +27,7 @@ import axios from '../utils/axios'
        setup(){
         let isShow = ref(true)
         let token = localStorage.getItem('token')
-        console.log(token)
+        
         if(token){
             isShow.value = false
         }

@@ -38,7 +38,7 @@
            
             let counter = ref(10);
             const array = [{
-                    type: "推荐",
+                    type: "所有",
                     path: "recommendation"
                 },
                 {

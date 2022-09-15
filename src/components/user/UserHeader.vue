@@ -41,6 +41,10 @@ export default{
     let username1 =ref('')
     let isShow = ref(true)
     let username_my = ref('')
+    if(!localStorage.getItem('token')){
+      isShow.value = false
+    }
+    else
     setTimeout(() => {
       username1.value = props.userinfo.username
       axios.get('http://localhost:3007/my/userinfo').then(

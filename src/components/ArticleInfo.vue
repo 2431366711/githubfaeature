@@ -40,15 +40,20 @@ import {ref} from 'vue'
             let image = ref('')
             setTimeout(()=>{
               console.log('props.articleinfo.userid',props.articleinfo.userid)
-               axios.get('http://localhost:3007/api/userinfo/'+props.articleinfo.userid).then(res=>{
-                console.log('hello',res)
-                image.value = res.data.data.image
-            })
+               
             },100)
            
            
             let time = ref('')
             setTimeout(() => {
+            axios.get('http://localhost:3007/api/userinfo/'+props.articleinfo.userid).then(res=>{
+                console.log('hello',res)
+                image.value = res.data.data.image
+            })
+
+
+
+            
             let date = new Date(props.articleinfo.date)
             console.log(date)
             let month = date.getMonth()+1

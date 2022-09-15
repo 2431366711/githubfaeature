@@ -10,7 +10,7 @@
    <p>新头像上传</p>
   <div class="item">
 
-    <el-upload
+ <el-upload
   class="avatar-uploader"
   action="https://jsonplaceholder.typicode.com/posts/"
   :show-file-list="false"
@@ -28,6 +28,7 @@
 
 <script>
 import axios from '../utils/axios'
+
  export default {
     data() {
       return {
@@ -45,9 +46,9 @@ import axios from '../utils/axios'
       var reader = new FileReader();
       reader.readAsDataURL(file.raw);
       reader.onload = () => {
-        console.log("file 转 base64结果：" + reader.result);
+       
         this.dataURL = reader.result
-        console.log('dataurl',this.dataURL)
+        
       };
       reader.onerror = function(error) {
         console.log("Error: ", error);

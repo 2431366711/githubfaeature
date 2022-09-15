@@ -66,6 +66,38 @@ const routes = [
       name:'loginhello',
       component: ()=>import('../views/LoginView.vue')
     },
+    {
+      path:'/admine',
+      name:'admine',
+      component: ()=>import('../views/AdmineView.vue'),
+      children:[
+      {
+        path:'user',
+        component: ()=>import('../views/AduserView.vue'),
+        
+      },
+      {
+        path:'adimeinfo',
+        component: ()=>import('../views/AdadmineView.vue'),
+      },
+      {
+        path:'commentinfo',
+        component: ()=>import('../views/AdmineComment.vue'),
+      },
+      {
+        path:'commentadd',
+        component: ()=>import('../views/AdmineCommentadd.vue'),
+      },
+      {
+        path:'articleinfo',
+        component: ()=>import('../views/AdarticleView.vue'),
+      },
+      {
+        path:'articleadd',
+        component: ()=>import('../views/AdarticleaddView.vue'),
+      }
+      ]
+    },
 ]
 
 const router = createRouter({

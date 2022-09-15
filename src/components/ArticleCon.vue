@@ -14,7 +14,7 @@
        <p class="content">{{data.title}}</p>
        </div> 
        <div class="right">
-        <img src="https://p9-passport.byteacctimg.com/img/mosaic-legacy/3791/5070639578~300x300.image" alt="">
+        <img :src="imageurl" alt="">
        </div>
     </div>
 </router-link>
@@ -33,6 +33,26 @@ import {computed,ref} from 'vue'
         },
          
         setup(props){
+           const image = [
+            'https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/897ed2f96d5b4144bdeeab68e65c9690~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/720d976d5b5947c187b8f7039126c10e~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ce5bdb3946d84a3aa3346043f7c312a4~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f00c607c84ff47a7b9801c86ffb245bb~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/410367118c8a463dbe45fa1d30d7ad4a~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/90c6c35d87164ed28437294140aa7845~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fb1e5fefff684c64803df69f699792b6~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8f92f5b6e10e41a5a66fe7b6a007401a~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f978819af194fff81d663305c2bef90~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6d389d067ed4da5bbddebec1f8b3642~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a116048dd5a9475889469e1e33240bcd~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?',
+            'https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4b74c688371b457298dc177590e65d00~tplv-k3u1fbpfcp-no-mark:240:240:240:160.awebp?'
+           ]
+            const getRandom = (min, max) =>{
+            return Math.floor(Math.random() * (max - min + 1)) + min
+        }
+           let random = ref(getRandom(1,10))
+           let imageurl = ref(image[random])
+           console.log('random',random)
            let date = new Date(props.data.date)
            console.log('date1',props.data)
            let oldtimer = ref(date.getTime())
@@ -58,7 +78,7 @@ import {computed,ref} from 'vue'
             showtime = `${(time.value/356).toFixed(0)}年前`
            }
            return {
-                time,showtime
+                time,showtime,image,imageurl
            }
         }
     }

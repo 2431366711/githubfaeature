@@ -13,7 +13,7 @@
       label="文章标题"
       v-model="title"
       class="mt-4"
-      :rules="[value => (value && value.length > 1) || '不能为空']"
+
      
     />
       <va-input
@@ -32,7 +32,7 @@
       label="文章类型"
       v-model="typename"
       class="mt-4"
-      :rules="[value => (value && value.length > 1) || '不能为空']"
+
     />
      
     
@@ -64,8 +64,8 @@
 </template>
 
 <script>
- import '@wangeditor/editor/dist/css/style.css' // 引入 css
-
+import '@wangeditor/editor/dist/css/style.css' // 引入 css
+import { ElMessage } from 'element-plus'
 import { onBeforeUnmount, ref, shallowRef, onMounted } from 'vue'
 import { Editor, Toolbar } from '@wangeditor/editor-for-vue'
 import axios from '../utils/axios'
@@ -119,12 +119,35 @@ import axios from '../utils/axios'
                 type:typename.value
               }).then(res=>{
                 console.log(res)
-                isShow.value = true
+                // isShow.value = true
                 message.value= res.data.message
+                if(res.data.status==0){
+                ElMessage({
+                showClose: true,
+                message: message.value,
+                type: 'success',
+                 })
+                }
+                else{
+                  ElMessage({
+                showClose: true,
+                message: message.value,
+                type: 'warning',
+                 })
+                }
+               
+                 title.value = ''
+                 content.value = ''
+                 typename.value = ''
               },err=>{
                 console.log(err)
-                isShow.value = true
+                
                 message.value= "身份认证错误"
+                 ElMessage({
+                showClose: true,
+                message: message.value,
+                type: 'warning',
+                 })
               })
             }
 
